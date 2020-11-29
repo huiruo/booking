@@ -1,0 +1,51 @@
+*.iml
+.gradle
+Booking_front/local.properties
+Booking_front/.idea/caches
+Booking_front/.idea/libraries
+Booking_front/.idea/modules.xml
+Booking_front/.idea/workspace.xml
+Booking_front/.idea/navEditor.xml
+Booking_front/.idea/assetWizardSettings.xml
+Booking_front/.DS_Store
+Booking_front/build
+Booking_front/captures
+Booking_front/.externalNativeBuild
+Booking_front/.cxx
+
+# back
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+Booking_back/nbproject/private/
+Booking_back/nbbuild/
+Booking_back/dist/
+Booking_back/nbdist/
+Booking_back/.nb-gradle/
+Booking_back/build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+Booking_back/.vscode/
+
+
