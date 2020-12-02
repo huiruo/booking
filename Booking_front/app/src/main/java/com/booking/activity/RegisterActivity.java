@@ -114,7 +114,6 @@ public class RegisterActivity extends AppCompatActivity {
                             System.out.println("请求报错" + e.getMessage());
                         }
                     }
-
                     @Override
                     public void onFailure(@NotNull Call call, @NotNull IOException e) {
                         System.out.println("未知错误" + e.getMessage());
