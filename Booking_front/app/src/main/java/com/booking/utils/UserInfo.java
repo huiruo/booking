@@ -8,7 +8,7 @@ import java.util.List;
 public class UserInfo {
 
   /**
-   * data : {"chapterTops":[],"collectIds":[],"email":"","icon":"","id":12662,"password":"","token":"","type":0,"username":"15294792877"}
+   * data : {"chapterTops":[],"collectIds":[],"email":"","icon":"","id":12662,"password":"","token":"","type":0,"account":"15294792877"}
    * errorCode : 0
    * errorMsg :
    */
@@ -52,7 +52,7 @@ public class UserInfo {
      * password :
      * token :
      * type : 0
-     * username : 15294792877
+     * account : 15294792877
      */
 
     private String email;
@@ -61,7 +61,7 @@ public class UserInfo {
     private String password;
     private String token;
     private int type;
-    private String username;
+    private String account;
     private List<?> chapterTops;
     private List<?> collectIds;
 
@@ -114,11 +114,11 @@ public class UserInfo {
     }
 
     public String getUsername() {
-      return username;
+      return account;
     }
 
-    public void setUsername(String username) {
-      this.username = username;
+    public void setUsername(String account) {
+      this.account = account;
     }
 
     public List<?> getChapterTops() {
@@ -146,7 +146,7 @@ public class UserInfo {
           ", password='" + password + '\'' +
           ", token='" + token + '\'' +
           ", type=" + type +
-          ", username='" + username + '\'' +
+          ", account='" + account + '\'' +
           ", chapterTops=" + chapterTops +
           ", collectIds=" + collectIds +
           '}';

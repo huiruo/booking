@@ -5,10 +5,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.booking.R;
+import com.booking.net.OkHttpException;
+import com.booking.net.RequestParams;
+import com.booking.net.ResponseCallback;
+import com.booking.reqApi.HttpRequest;
+import com.booking.utils.UserInfo;
 import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
@@ -72,7 +78,28 @@ public class RegisterActivity extends AppCompatActivity {
                 Log.d("data", account_str);
                 Log.d("data", password_str);
                 Log.d("data", confirmPassword_str);
-                registerWithOkHttp(account_str, password_str);
+                //registerWithOkHttp(account_str, password_str);
+                register(account_str, password_str);
+            }
+            private void register(String account_str, String password_str) {
+                RequestParams params = new RequestParams();
+                params.put("account", account_str);
+                params.put("password", password_str);
+
+                HttpRequest.postLoginApi(params, new ResponseCallback() {
+                    @Override
+                    public void onSuccess(Object responseObj) {
+                        UserInfo userInfo = (UserInfo) responseObj;
+                        Toast.makeText(RegisterActivity.this, "请求成功"+userInfo.toString(), Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(OkHttpException failuer) {
+                        Log.e("TAG", "请求失败=" + failuer.getEmsg());
+                        Toast.makeText(RegisterActivity.this, "请求失败="+failuer.getEmsg(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
             }
 
             private void registerWithOkHttp(String account_str, String password_str) {
