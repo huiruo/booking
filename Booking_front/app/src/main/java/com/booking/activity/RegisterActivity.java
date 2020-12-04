@@ -85,8 +85,8 @@ public class RegisterActivity extends AppCompatActivity {
                 RequestParams params = new RequestParams();
                 params.put("account", account_str);
                 params.put("password", password_str);
-
-                HttpRequest.postLoginApi(params, new ResponseCallback() {
+                String register_url = baseUrl + "/user/register";
+                HttpRequest.postRegisterApi(register_url,params, new ResponseCallback() {
                     @Override
                     public void onSuccess(Object responseObj) {
                         UserInfo userInfo = (UserInfo) responseObj;

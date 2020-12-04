@@ -1,5 +1,7 @@
 package com.booking.reqApi;
 
+import android.util.Log;
+
 import com.booking.net.RequestMode;
 import com.booking.net.RequestParams;
 import com.booking.net.ResponseByteCallback;
@@ -12,6 +14,7 @@ import java.util.List;
  * 描述：所有的请求接口
  */
 public class HttpRequest {
+
   /**
    * @param params 入参
    * @param callback 回调接口
@@ -26,8 +29,8 @@ public class HttpRequest {
   public static void postLoginApi(RequestParams params, ResponseCallback callback) {
     RequestMode.postRequest("https://www.wanandroid.com/user/login", params, callback, UserInfo.class);
   }
-  public static void postRegisterApi(RequestParams params, ResponseCallback callback) {
-    RequestMode.postRequest("https://www.wanandroid.com/user/login", params, callback, UserInfo.class);
+  public static void postRegisterApi(String url,RequestParams params, ResponseCallback callback) {
+    RequestMode.postRequest(url, params, callback, UserInfo.class);
   }
   /**
    * 下载图片 Get方式

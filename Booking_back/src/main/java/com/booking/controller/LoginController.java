@@ -37,8 +37,8 @@ public class LoginController {
     public Result register(@RequestBody User user, HttpServletRequest request) {
         Result result = new Result();
         log.info("register1" + user);
-        log.info("register2" + user);
         try {
+            result.setState(true).setMsg("注册成功").setUserId("183");
             /*User  userDb = userService.login(user);
             result.setMsg("登录成功").setUserId(userDb.getId());
             //登录成功保存标记:  方式1：存在 ServletContext application(暂用服务器资源) 2.Redis: 以userid为标记
