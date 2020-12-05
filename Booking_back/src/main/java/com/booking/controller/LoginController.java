@@ -1,7 +1,9 @@
 package com.booking.controller;
 
+import com.booking.service.UserService;
 import com.booking.utils.Result;
-import com.booking.utils.User;
+import com.booking.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("user")
 @Slf4j
 public class LoginController {
+    @Autowired
+    private UserService userService;
     //***登录
     @RequestMapping("login")
     public Result login(@RequestBody User user, HttpServletRequest request) {
@@ -44,6 +48,8 @@ public class LoginController {
             //登录成功保存标记:  方式1：存在 ServletContext application(暂用服务器资源) 2.Redis: 以userid为标记
             request.getServletContext().setAttribute(userDb.getId(),userDb);
              */
+            //**注册用户
+            userService.register(user);
         } catch (Exception e) {
             result.setState(false).setMsg(e.getMessage());
         }
