@@ -2,10 +2,12 @@ package com.booking.service;
 
 import com.booking.dao.UserDAO;
 import com.booking.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import javax.annotation.Resource;
+
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
@@ -21,14 +23,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User login(User user) {
-        User userDb=userDAO.findByAccount(user.getAccount());
-        if(userDb!=null){
-            if(userDb.getPassword().equals(user.getPassword())){
-               return userDb;
-            }else {
+        User userDb = userDAO.findByAccount(user.getAccount());
+        if (userDb != null) {
+            if (userDb.getPassword().equals(user.getPassword())) {
+                return userDb;
+            } else {
                 throw new RuntimeException("密码错误");
             }
-        }else {
+        } else {
             throw new RuntimeException("用户名不存在");
         }
     }
@@ -38,8 +40,8 @@ public class UserServiceImpl implements UserService {
         if (userDAO.findByAccount(user.getAccount()) == null) {
             //注册
             userDAO.register(user);
-        }else {
-           throw new RuntimeException("用户名已经存在");
+        } else {
+            throw new RuntimeException("用户名已存在");
         }
     }
 }

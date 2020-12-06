@@ -1,4 +1,4 @@
-package com.booking.utils;
+package com.booking.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
