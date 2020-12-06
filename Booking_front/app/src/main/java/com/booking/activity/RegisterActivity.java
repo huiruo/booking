@@ -3,6 +3,7 @@ package com.booking.activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -39,6 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_register);
         init();
     }
@@ -60,19 +62,24 @@ public class RegisterActivity extends AppCompatActivity {
                 String password_str = password.getText().toString();
                 String confirmPassword_str = confirmPassword.getText().toString();
                 if (account_str == null || account_str.length() == 0) {
-                    Log.w("注册", "请输入账户");
+                    //Toast.makeText(this, "You clicked Add", Toast.LENGTH_SHORT).show();
+                    Toast ts = Toast.makeText(getBaseContext(),"请输入账户",Toast.LENGTH_LONG);
+                    ts.show();
                     return;
                 }
                 if (password_str == null || password_str.length() == 0) {
-                    Log.w("注册", "请输入密码");
+                    //Log.w("注册", "请输入密码");
+                    Toast.makeText(RegisterActivity.this, "请输入密码", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (confirmPassword_str == null || confirmPassword_str.length() == 0) {
-                    Log.w("注册", "请确认密码");
+                    //Log.w("注册", "请确认密码");
+                    Toast.makeText(getBaseContext(), "请确认密码", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (!password_str.equals(confirmPassword_str)) {
-                    Log.w("注册", "注册密码不一致");
+//                    Log.w("注册", "注册密码不一致");
+                    Toast.makeText(getBaseContext(), "注册密码不一致", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 Log.d("data", account_str);
