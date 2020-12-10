@@ -57,6 +57,13 @@ public class RegisterActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                /*
+                {
+"account":"12345@qq.com",
+"password":12345,
+"email":"2196411859@qq.com"
+}
+                * */
                 Log.i("baseUrl", baseUrl);
                 String account_str = account.getText().toString();
                 String password_str = password.getText().toString();
@@ -110,7 +117,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
 
             private void registerWithOkHttp(String account_str, String password_str) {
-                Map<String, String> params = new HashMap<String, String>();
+                Map<String, String> params = new HashMap<>();
                 params.put("account", account_str);
                 params.put("password", password_str);
                 Gson gson = new Gson();
@@ -157,4 +164,3 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 }
-

@@ -32,5 +32,6 @@
             </intent-filter>
         </activity>
         <activity android:name="com.booking.activity.RegisterActivity"></activity>
+        <activity android:name="com.booking.activity.LoginActivity"></activity>
     </application>
 </manifest>

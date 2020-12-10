@@ -12,7 +12,6 @@ import lombok.experimental.Accessors;
 @ToString
 @Accessors(chain=true)
 public class Result {
-    private Boolean state = true;
+    private int code;
     private String msg;
-    private String userId;
 }
