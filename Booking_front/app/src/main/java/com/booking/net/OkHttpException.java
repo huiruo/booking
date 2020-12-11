@@ -9,20 +9,20 @@ public class OkHttpException extends Exception {
 
   private static final long serialVersionUID = 1L;
 
-  private int ecode; //错误码
-  private String emsg; //错误消息
+  private int code; //错误码
+  private String msg; //错误消息
 
-  public OkHttpException(int ecode, String emsg) {
-    this.ecode = ecode;
-    this.emsg = emsg;
+  public OkHttpException(int code, String msg) {
+    this.code = code;
+    this.msg = msg;
   }
 
-  public int getEcode() {
-    return ecode;
+  public int getCode() {
+    return code;
   }
 
-  public String getEmsg() {
-    return emsg;
+  public String getMsg() {
+    return msg;
   }
 
 }

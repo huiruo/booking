@@ -40,7 +40,8 @@ public class UserController {
             userService.register(user);
             return new Result<>();
         } catch (Exception e) {
-            return new Result<>(1, e.getMessage());
+            //return new Result<>(1, e.getMessage());
+            return new Result<>(4, e.getMessage());
         }
     }
 }

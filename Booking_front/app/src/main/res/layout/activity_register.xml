@@ -18,6 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="18dp"
+        android:inputType="textPassword"
         android:hint="请输入你的密码" />
 
     <EditText
@@ -26,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="18dp"
+        android:inputType="textPassword"
         android:hint="请确认你的密码" />
 
     <Button

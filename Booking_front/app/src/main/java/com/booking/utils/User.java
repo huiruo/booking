@@ -1,53 +1,96 @@
 package com.booking.utils;
+
+import java.util.List;
+
 /*
 快捷键：
 在创建一个javabean时,通过快捷键Alt+Insert 快速生成.
 * */
 public class User {
+
     @Override
     public String toString() {
         return "User{" +
-                "id='" + id + '\'' +
-                ", account='" + account + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
+                "data=" + data +
+                ", code=" + code +
+                ", msg='" + msg + '\'' +
                 '}';
     }
 
-    private String id;
-    private String account;
-    private String password;
-    private String email;
+    private DataBean data;
+    private int code;
+    private String msg;
 
-    public String getId() {
-        return id;
+    public DataBean getData() {
+        return data;
     }
 
-    public String getAccount() {
-        return account;
+    public int getCode() {
+        return code;
     }
 
-    public String getPassword() {
-        return password;
+    public String getMsg() {
+        return msg;
     }
 
-    public String getEmail() {
-        return email;
+    public void setData(DataBean data) {
+        this.data = data;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setCode(int code) {
+        this.code = code;
     }
 
-    public void setAccount(String account) {
-        this.account = account;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    public static class DataBean {
+        @Override
+        public String toString() {
+            return "User{" +
+                    "id='" + id + '\'' +
+                    ", account='" + account + '\'' +
+                    ", password='" + password + '\'' +
+                    ", email='" + email + '\'' +
+                    '}';
+        }
 
-    public void setEmail(String email) {
-        this.email = email;
+        private String id;
+        private String account;
+        private String password;
+        private String email;
+
+        public String getId() {
+            return id;
+        }
+
+        public String getAccount() {
+            return account;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public void setAccount(String account) {
+            this.account = account;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
     }
 }

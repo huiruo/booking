@@ -79,7 +79,9 @@ public class LoginActivity extends AppCompatActivity {
                     public void onSuccess(Object responseObj) {
                         User user = (User) responseObj;
                         Toast.makeText(LoginActivity.this, "登录成功" + user.toString(), Toast.LENGTH_SHORT).show();
-
+                        Log.d("user:",user.toString());
+                        ///*
+                        /*
                         new Handler(new Handler.Callback() {
                             @Override
                             public boolean handleMessage(@NonNull Message msg) {
@@ -89,13 +91,13 @@ public class LoginActivity extends AppCompatActivity {
                                 LoginActivity.this.finish();
                                 return false;
                             }
-                        }).sendEmptyMessageDelayed(0,1000);
+                        }).sendEmptyMessageDelayed(0,1000);*/
                         //
                     }
 
                     @Override
                     public void onFailure(OkHttpException failuer) {
-                        Log.e("TAG", "请求失败=" + failuer.getEmsg());
+                        Log.e("TAG", "登录失败:" + failuer.getMsg());
                         Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
                     }
                 });

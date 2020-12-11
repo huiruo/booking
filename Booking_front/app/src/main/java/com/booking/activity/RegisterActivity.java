@@ -113,8 +113,12 @@ public class RegisterActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(OkHttpException failuer) {
-                        Log.e("TAG", "请求失败=" + failuer.getEmsg());
-                        Toast.makeText(RegisterActivity.this, "请求失败=" + failuer.getEmsg(), Toast.LENGTH_SHORT).show();
+                        //Log.e("TAG", "注册失败：" + failuer);
+                        if(failuer.getCode()==4){
+                            Toast.makeText(RegisterActivity.this, "账号名已经存在，请更换注册账号", Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(RegisterActivity.this, "注册失败:" + failuer.getMsg(), Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
 
