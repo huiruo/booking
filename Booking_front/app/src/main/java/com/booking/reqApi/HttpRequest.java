@@ -6,6 +6,7 @@ import com.booking.net.RequestMode;
 import com.booking.net.RequestParams;
 import com.booking.net.ResponseByteCallback;
 import com.booking.net.ResponseCallback;
+import com.booking.utils.User;
 import com.booking.utils.UserInfo;
 import java.io.File;
 import java.util.List;
@@ -26,11 +27,14 @@ public class HttpRequest {
    * @param params 入参
    * @param callback 回调接口
    */
-  public static void postLoginApi(RequestParams params, ResponseCallback callback) {
-    RequestMode.postRequest("https://www.wanandroid.com/user/login", params, callback, UserInfo.class);
-  }
+//  public static void postLoginApi(RequestParams params, ResponseCallback callback) {
+//    RequestMode.postRequest("https://www.wanandroid.com/user/login", params, callback, UserInfo.class);
+//  }
   public static void postRegisterApi(String url,RequestParams params, ResponseCallback callback) {
-    RequestMode.postRequest(url, params, callback, UserInfo.class);
+    RequestMode.postRequest(url, params, callback, User.class);
+  }
+  public static void postLoginApi(String url,RequestParams params, ResponseCallback callback) {
+    RequestMode.postRequest(url, params, callback, User.class);
   }
   /**
    * 下载图片 Get方式

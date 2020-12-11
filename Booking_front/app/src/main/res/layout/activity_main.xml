@@ -7,26 +7,8 @@
     android:orientation="vertical"
     tools:context=".activity.MainActivity"
     >
-    <Button
-        android:id="@+id/registerBtn"
-        android:layout_width="fill_parent"
-        android:layout_height="40dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"
-        android:layout_marginTop="15dp"
-        android:text="注 册"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="18sp"/>
-    <Button
-        android:id="@+id/loginBtn"
-        android:layout_width="fill_parent"
-        android:layout_height="40dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"
-        android:layout_marginTop="15dp"
-        android:text="登 录"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="18sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="main page" />
 </LinearLayout>

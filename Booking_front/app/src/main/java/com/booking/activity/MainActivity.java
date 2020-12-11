@@ -12,9 +12,6 @@ import android.widget.Button;
 import com.booking.R;
 
 public class MainActivity extends AppCompatActivity {
-    Button goToRegister;
-    Button goToLogin;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,21 +21,5 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
-        goToRegister = findViewById(R.id.registerBtn);
-        goToLogin = findViewById(R.id.loginBtn);
-        goToRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
-        goToLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 }

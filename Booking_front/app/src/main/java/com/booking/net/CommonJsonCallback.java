@@ -116,14 +116,19 @@ public class CommonJsonCallback implements Callback {
            * 如果class为null  则不解析直接返回json
            */
           if (mClass == null) {
+            Log.d("1","-->");
             mListener.onSuccess(responseObj);
           } else {
             //需要转化为实体对象
             Gson gson = new GsonBuilder().serializeNulls().create();
             Object obj = gson.fromJson((String) responseObj, mClass);
-
+            Log.d("2","-->");
+            System.out.println(responseObj);
+            System.out.println(obj);
+            System.out.println(mClass);
             if (obj != null) {
               mListener.onSuccess(obj);
+              //mListener.onSuccess(responseObj);
             } else {
               mListener.onFailure(new OkHttpException(JSON_ERROR, JSON_MSG));
             }

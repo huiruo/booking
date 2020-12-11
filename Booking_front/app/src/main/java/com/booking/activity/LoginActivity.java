@@ -1,6 +1,9 @@
 package com.booking.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -8,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.booking.R;
@@ -15,9 +19,11 @@ import com.booking.net.OkHttpException;
 import com.booking.net.RequestParams;
 import com.booking.net.ResponseCallback;
 import com.booking.reqApi.HttpRequest;
-import com.booking.utils.UserInfo;
+import com.booking.utils.User;
 
 import java.util.Properties;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class LoginActivity extends AppCompatActivity {
     Button btn_register;
@@ -45,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                 String account_str = account.getText().toString();
                 String password_str = password.getText().toString();
                 if (account_str == null || account_str.length() == 0) {
-                    Toast ts = Toast.makeText(getBaseContext(),"请输入账户",Toast.LENGTH_LONG);
+                    Toast ts = Toast.makeText(getBaseContext(), "请输入账户", Toast.LENGTH_LONG);
                     ts.show();
                     return;
                 }
@@ -53,10 +59,9 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "请输入密码", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Log.d("data", account_str);
-                Log.d("data", password_str);
                 loginAction(account_str, password_str);
             }
+
             private void loginAction(String account_str, String password_str) {
                 RequestParams params = new RequestParams();
                 params.put("account", account_str);
@@ -68,18 +73,30 @@ public class LoginActivity extends AppCompatActivity {
                     "password":"123456"
                 }
                 * */
-                String register_url = baseUrl + "/user/login";
-                HttpRequest.postRegisterApi(register_url,params, new ResponseCallback() {
+                String login_url = baseUrl + "/user/login";
+                HttpRequest.postLoginApi(login_url, params, new ResponseCallback() {
                     @Override
                     public void onSuccess(Object responseObj) {
-                        UserInfo userInfo = (UserInfo) responseObj;
-                        Toast.makeText(LoginActivity.this, "请求成功"+userInfo.toString(), Toast.LENGTH_SHORT).show();
+                        User user = (User) responseObj;
+                        Toast.makeText(LoginActivity.this, "登录成功" + user.toString(), Toast.LENGTH_SHORT).show();
+
+                        new Handler(new Handler.Callback() {
+                            @Override
+                            public boolean handleMessage(@NonNull Message msg) {
+                                Log.d("启动任务","--->");
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(intent);
+                                LoginActivity.this.finish();
+                                return false;
+                            }
+                        }).sendEmptyMessageDelayed(0,1000);
+                        //
                     }
 
                     @Override
                     public void onFailure(OkHttpException failuer) {
                         Log.e("TAG", "请求失败=" + failuer.getEmsg());
-                        Toast.makeText(LoginActivity.this, "请求失败="+failuer.getEmsg(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
                     }
                 });
 

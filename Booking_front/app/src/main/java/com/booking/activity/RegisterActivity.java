@@ -1,5 +1,6 @@
 package com.booking.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.booking.net.OkHttpException;
 import com.booking.net.RequestParams;
 import com.booking.net.ResponseCallback;
 import com.booking.reqApi.HttpRequest;
+import com.booking.utils.User;
 import com.booking.utils.UserInfo;
 import com.google.gson.Gson;
 
@@ -57,12 +59,12 @@ public class RegisterActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                /*
+                /*test account
                 {
-"account":"12345@qq.com",
-"password":12345,
-"email":"2196411859@qq.com"
-}
+                "account":"12345@qq.com",
+                "password":12345,
+                "email":"2196411859@qq.com"
+                }
                 * */
                 Log.i("baseUrl", baseUrl);
                 String account_str = account.getText().toString();
@@ -70,44 +72,49 @@ public class RegisterActivity extends AppCompatActivity {
                 String confirmPassword_str = confirmPassword.getText().toString();
                 if (account_str == null || account_str.length() == 0) {
                     //Toast.makeText(this, "You clicked Add", Toast.LENGTH_SHORT).show();
-                    Toast ts = Toast.makeText(getBaseContext(),"请输入账户",Toast.LENGTH_LONG);
+                    Toast ts = Toast.makeText(getBaseContext(), "请输入账户", Toast.LENGTH_LONG);
                     ts.show();
                     return;
                 }
                 if (password_str == null || password_str.length() == 0) {
-                    //Log.w("注册", "请输入密码");
                     Toast.makeText(RegisterActivity.this, "请输入密码", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (confirmPassword_str == null || confirmPassword_str.length() == 0) {
-                    //Log.w("注册", "请确认密码");
                     Toast.makeText(getBaseContext(), "请确认密码", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (!password_str.equals(confirmPassword_str)) {
-//                    Log.w("注册", "注册密码不一致");
                     Toast.makeText(getBaseContext(), "注册密码不一致", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                //registerWithOkHttp(account_str, password_str);
                 register(account_str, password_str);
             }
+
             private void register(String account_str, String password_str) {
                 RequestParams params = new RequestParams();
                 params.put("account", account_str);
                 params.put("password", password_str);
                 String register_url = baseUrl + "/user/register";
-                HttpRequest.postRegisterApi(register_url,params, new ResponseCallback() {
+                HttpRequest.postRegisterApi(register_url, params, new ResponseCallback() {
                     @Override
                     public void onSuccess(Object responseObj) {
-                        UserInfo userInfo = (UserInfo) responseObj;
-                        Toast.makeText(RegisterActivity.this, "请求成功"+userInfo.toString(), Toast.LENGTH_SHORT).show();
+                        //UserInfo userInfo = (UserInfo) responseObj;
+                        //System.out.println(userInfo);
+                        //Log.d("请求返回",userInfo.toString());
+                        User user = (User) responseObj;
+                        System.out.println(user);
+                        Log.d("请求返回", user.toString());
+                        Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                        startActivity(intent);
                     }
 
                     @Override
                     public void onFailure(OkHttpException failuer) {
                         Log.e("TAG", "请求失败=" + failuer.getEmsg());
-                        Toast.makeText(RegisterActivity.this, "请求失败="+failuer.getEmsg(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "请求失败=" + failuer.getEmsg(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
