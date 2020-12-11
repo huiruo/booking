@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="18dp"
-        android:hint="请输入你的密码A" />
+        android:hint="请输入你的密码" />
 
     <EditText
         android:id="@+id/confirmPassword"

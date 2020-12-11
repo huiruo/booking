@@ -15,7 +15,6 @@ import org.json.JSONObject;
  */
 
 public class RequetInterceptor implements Interceptor {
-
   /**
    * 这个chain里面包含了request和response，所以你要什么都可以从这里拿
    */
@@ -64,9 +63,5 @@ public class RequetInterceptor implements Interceptor {
     long duration = endTime - startTime;
     Log.e("TAG","----------" + "耗时:" + duration + "毫秒----------");
     return response;
-
-
   }
-
-
 }

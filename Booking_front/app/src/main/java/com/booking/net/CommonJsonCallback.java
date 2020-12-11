@@ -23,15 +23,15 @@ import org.json.JSONObject;
 public class CommonJsonCallback implements Callback {
 
   /**
-   * errorCode是根据接口返回的标识 实际根据自己接口返回为准
+   * errorCode是根据接口返回的标识 实际根据接口返回为准
    */
-  protected final String RESULT_CODE = "errorCode";
+  protected final String RESULT_CODE = "code";
   protected final int RESULT_CODE_VALUE = 0;
 
   /**
-   * errorMsg字段提示信息，实际根据自己接口返回为准
+   * errorMsg字段提示信息，实际根据接口返回为准
    */
-  protected final String ERROR_MSG = "errorMsg";
+  protected final String ERROR_MSG = "code";
 
   protected final String NETWORK_MSG = "请求失败";
   protected final String JSON_MSG = "解析失败";
@@ -110,7 +110,7 @@ public class CommonJsonCallback implements Callback {
     try {
       JSONObject result = new JSONObject(responseObj.toString());
       if (result.has(RESULT_CODE)) {
-        //从JSON对象中取出我们的响应码，如果为0，则是正确的响应 (实际情况按你们接口文档)
+        //从JSON对象中取出我们的响应码，如果为0，则是正确的响应
         if (result.getInt(RESULT_CODE) == RESULT_CODE_VALUE) {
           /**
            * 如果class为null  则不解析直接返回json

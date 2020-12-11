@@ -64,9 +64,9 @@ public class LoginActivity extends AppCompatActivity {
                 /*
                 *测试：admin 123456
                 {
-"account":"admin",
-"password":"123456"
-}
+                    "account":"admin",
+                    "password":"123456"
+                }
                 * */
                 String register_url = baseUrl + "/user/login";
                 HttpRequest.postRegisterApi(register_url,params, new ResponseCallback() {
