@@ -34,5 +34,10 @@
         <activity android:name="com.booking.activity.RegisterActivity"></activity>
         <activity android:name="com.booking.activity.LoginActivity"></activity>
         <activity android:name="com.booking.activity.MainActivity"></activity>
+<!--        <receiver android:name="com.booking.utils.NetBroadcastReceiver">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="com.booking.utils.NetBroadcastReceiver" />-->
+<!--            </intent-filter>-->
+<!--        </receiver>-->
     </application>
 </manifest>

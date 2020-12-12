@@ -15,7 +15,6 @@ public class NetBroadcastReceiver extends BroadcastReceiver {
         if (connectivityManager == null){
             Toast.makeText(context, "网络已断开", Toast.LENGTH_SHORT).show();
         }
-        //
         //获取网络连接信息
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isAvailable()) {
@@ -26,7 +25,7 @@ public class NetBroadcastReceiver extends BroadcastReceiver {
                 Toast.makeText(context, "手机数据网络", Toast.LENGTH_SHORT).show();
             }
         }else {
-            Toast.makeText(context, "当前网络不可用", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "当前网络不可用!", Toast.LENGTH_SHORT).show();
         }
     }
 }

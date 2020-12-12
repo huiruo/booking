@@ -5,9 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.booking.R;
 
 //public class StartActivity extends AppCompatActivity {
@@ -20,39 +17,10 @@ public class StartActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_start);
+        //是否监听网络
+        setCheckNetworkStatusChangeListenerEnable(false);
         init();
     }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
     private void init() {
         goToRegister = findViewById(R.id.registerBtn);
         goToLogin = findViewById(R.id.loginBtn);

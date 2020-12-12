@@ -15,6 +15,11 @@ import com.booking.utils.NetBroadcastReceiver;
  * */
 public class BaseActivity extends AppCompatActivity {
     private NetBroadcastReceiver netBroadcastReceiver;
+    private boolean checkNetworkStatusChangeListenerEnable = false;
+
+    public void setCheckNetworkStatusChangeListenerEnable(boolean checkNetworkStatusChangeListenerEnable) {
+        this.checkNetworkStatusChangeListenerEnable = checkNetworkStatusChangeListenerEnable;
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,31 +54,31 @@ public class BaseActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         Log.d("onPause", "activity正在停止，紧接着就是onstop,如果快速再回到当前，onResume就会被调用,可以在此方法停止动画但不要做耗时操作，因为onPause必须先执行完，新activity的onResume才会执行");
-        Log.w("onPause2---->", "onPause2---->");
-//        if (netBroadcastReceiver != null) {
+        if (!checkNetworkStatusChangeListenerEnable) {
+            Log.d(super.toString(), "网络监听广播开关广播关闭");
+            return;
+        }
         Log.d("onPause---->", "unregisterReceiver");
         unregisterReceiver(netBroadcastReceiver);
-//        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         Log.d("onResume", "activity可见，出现在前台和用户交互");
-        Log.d("onResume1---->", "onResume1---->");
-//        if (netBroadcastReceiver == null) {
-        Log.d("onResume---->", "注册广播");
+        if (!checkNetworkStatusChangeListenerEnable) {
+            Log.d(super.toString(), "网络监听广播开关广播关闭,不注册广播");
+            return;
+        }
         registerBroadcastReceiver();
-//        }
     }
 
     /**
      * 注册网络状态广播
      */
     private void registerBroadcastReceiver() {
-        Log.d("注册方法", "-->");
+        Log.d(super.toString(), "注册广播");
         //注册广播
-        Log.d("正式注册", "-->");
         netBroadcastReceiver = new NetBroadcastReceiver();
         IntentFilter filter = new IntentFilter();
         filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
