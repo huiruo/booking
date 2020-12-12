@@ -17,23 +17,8 @@ import com.booking.net.RequestParams;
 import com.booking.net.ResponseCallback;
 import com.booking.reqApi.HttpRequest;
 import com.booking.utils.User;
-import com.booking.utils.UserInfo;
-import com.google.gson.Gson;
-
-import org.jetbrains.annotations.NotNull;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class RegisterActivity extends AppCompatActivity {
     Button btn_register;
@@ -46,6 +31,11 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         init();
     }
+
+//    @Override
+//    public void onDestroy(){
+//        super.onDestroy();
+//    }
 
     private void init() {
         btn_register = findViewById(R.id.register);
