@@ -9,21 +9,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.booking.R;
 import com.booking.net.OkHttpException;
 import com.booking.net.RequestParams;
 import com.booking.net.ResponseCallback;
 import com.booking.reqApi.HttpRequest;
 import com.booking.utils.User;
+
 import java.util.Properties;
 
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends BaseActivity {
     Button btn_register;
     EditText account, password, confirmPassword;
 
+    //end
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,11 +31,6 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         init();
     }
-
-//    @Override
-//    public void onDestroy(){
-//        super.onDestroy();
-//    }
 
     private void init() {
         btn_register = findViewById(R.id.register);
@@ -104,9 +99,9 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(OkHttpException failuer) {
                         //Log.e("TAG", "注册失败：" + failuer);
-                        if(failuer.getCode()==4){
+                        if (failuer.getCode() == 4) {
                             Toast.makeText(RegisterActivity.this, "账号名已经存在，请更换注册账号", Toast.LENGTH_SHORT).show();
-                        }else {
+                        } else {
                             Toast.makeText(RegisterActivity.this, "注册失败:" + failuer.getMsg(), Toast.LENGTH_SHORT).show();
                         }
                     }

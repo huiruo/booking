@@ -2,12 +2,15 @@ package com.booking.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import com.booking.R;
 
-//public class StartActivity extends AppCompatActivity {
 public class StartActivity extends BaseActivity {
     Button goToRegister;
     Button goToLogin;
@@ -21,6 +24,7 @@ public class StartActivity extends BaseActivity {
         setCheckNetworkStatusChangeListenerEnable(false);
         init();
     }
+
     private void init() {
         goToRegister = findViewById(R.id.registerBtn);
         goToLogin = findViewById(R.id.loginBtn);
@@ -29,7 +33,7 @@ public class StartActivity extends BaseActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(StartActivity.this, RegisterActivity.class);
                 startActivity(intent);
-                StartActivity.this.finish();
+//                StartActivity.this.finish();
             }
         });
         goToLogin.setOnClickListener(new View.OnClickListener() {
@@ -37,7 +41,6 @@ public class StartActivity extends BaseActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(StartActivity.this, LoginActivity.class);
                 startActivity(intent);
-                StartActivity.this.finish();
             }
         });
     }

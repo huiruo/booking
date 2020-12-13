@@ -1,18 +1,12 @@
 package com.booking.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.booking.R;
 import com.booking.net.OkHttpException;
@@ -22,10 +16,8 @@ import com.booking.reqApi.HttpRequest;
 import com.booking.utils.User;
 
 import java.util.Properties;
-import java.util.Timer;
-import java.util.TimerTask;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
     Button btn_register;
     EditText account, password;
 
@@ -79,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onSuccess(Object responseObj) {
                         User user = (User) responseObj;
                         Toast.makeText(LoginActivity.this, "登录成功" + user.toString(), Toast.LENGTH_SHORT).show();
-                        Log.d("user:",user.toString());
+                        Log.d("user:", user.toString());
                         ///*
                         /*
                         new Handler(new Handler.Callback() {
